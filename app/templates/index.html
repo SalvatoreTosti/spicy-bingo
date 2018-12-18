@@ -9,4 +9,30 @@
 <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/index.css') }}">
 {% endblock %}
 {% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-9">
+            <div class="grid-3">
+              <div class="small-box dark-bg flex center font-3">One</div>
+              <div class="small-box mid-bg flex center font-3">You get a spicy pepper</div>
+              <div class="small-box dark-bg flex center font-3">Three</div>
+              <div class="small-box dark-bg flex center font-3">Four</div>
+              <div class="small-box dark-bg flex center font-3">Five</div>
+              <div class="small-box dark-bg flex center font-3">Six</div>
+              <div class="small-box dark-bg flex center font-3">Seven</div>
+              <div class="small-box dark-bg flex center font-3">Eight</div>
+              <div class="small-box dark-bg flex center font-3">Nine</div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="dark-bg small-box flex-col">
+                <div>People</div>
+                    <div class="row tiny-box hilight-bg mid-fg">Person one</div>
+                    <div class="row tiny-box hilight-bg mid-fg">Person two</div>
+                    <div class="row tiny-box hilight-bg mid-fg">Person three</div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
