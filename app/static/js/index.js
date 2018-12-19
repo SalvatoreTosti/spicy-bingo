@@ -7,5 +7,6 @@ $(function(){
 $(function(){
 	$('#join-button').click(function() {
         console.log('join')
+        goToBoard()
 	})
 })
