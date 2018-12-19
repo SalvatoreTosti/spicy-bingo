@@ -22,6 +22,20 @@ body {
     flex-direction: column;
 }
 
+.button-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1em;
+}
+
+.height-50 {
+    height:50%;
+}
+
+.height-90 {
+    height:90%;
+}
+
 .center {
     justify-content: center;
     align-items: center;
