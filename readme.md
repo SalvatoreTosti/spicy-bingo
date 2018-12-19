@@ -1,6 +1,7 @@
 # Bingoer
 
 Semi-private bingo rooms for spicy cards.
+https://spicy-bingo.herokuapp.com/
 
 ## Getting Started
 
