@@ -4,9 +4,10 @@
 	<title>Spicy Bingo</title>
 {% endblock %}
 {% block scripts %}
+    <script type='text/javascript' src="{{ url_for('static',filename='js/board.js') }}"></script>
 {% endblock %}
 {% block css %}
-<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/index.css') }}">
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/board.css') }}">
 {% endblock %}
 {% block content %}
 
@@ -14,23 +15,30 @@
     <div class="row">
         <div class="col-9">
             <div class="grid-3">
-              <div class="small-box dark-bg flex center font-3">One</div>
-              <div class="small-box mid-bg flex center font-3">You get a spicy pepper</div>
-              <div class="small-box dark-bg flex center font-3">Three</div>
-              <div class="small-box dark-bg flex center font-3">Four</div>
-              <div class="small-box dark-bg flex center font-3">Five</div>
-              <div class="small-box dark-bg flex center font-3">Six</div>
-              <div class="small-box dark-bg flex center font-3">Seven</div>
-              <div class="small-box dark-bg flex center font-3">Eight</div>
-              <div class="small-box dark-bg flex center font-3">Nine</div>
+              <div class="card small-box dark-bg flex center font-3">One</div>
+              <div class="card small-box mid-bg flex center font-3">You get a spicy pepper</div>
+              <div class="card small-box dark-bg flex center font-3">Three</div>
+              <div class="card small-box dark-bg flex center font-3">Four</div>
+              <div class="card small-box dark-bg flex center font-3">Five</div>
+              <div class="card small-box dark-bg flex center font-3">Six</div>
+              <div class="card small-box dark-bg flex center font-3">Seven</div>
+              <div class="card small-box dark-bg flex center font-3">Eight</div>
+              <div class="card small-box dark-bg flex center font-3">Nine</div>
             </div>
         </div>
         <div class="col">
-            <div class="dark-bg small-box flex-col">
-                <div>People</div>
-                    <div class="row tiny-box hilight-bg mid-fg">Person one</div>
-                    <div class="row tiny-box hilight-bg mid-fg">Person two</div>
-                    <div class="row tiny-box hilight-bg mid-fg">Person three</div>
+            <div class="dark-bg small-box flex-column height-100 flex-start">
+                <div class='tiny-box small-margin-vertical hilight-bg'>People</div>
+                <div class='tiny-box small-margin-vertical mid-bg'>Zed</div>
+                <div class='tiny-box small-margin-vertical mid-bg'>Zenith</div>
+                <div class='tiny-box small-margin-vertical mid-bg'>Zolt</div>
+                <div class='tiny-box small-margin-vertical light-bg flex space-between'>
+                    <div>Zolt</div>
+                    <div>(!)</div>
+                </div>
+                <!-- <div class="flex center tiny-box hilight-bg mid-fg">Person one</div> -->
+                <!-- <div class="flex center tiny-box hilight-bg mid-fg">Person two</div> -->
+                <!-- <div class="flex center tiny-box hilight-bg mid-fg">Person three</div> -->
             </div>
         </div>
     </div>
