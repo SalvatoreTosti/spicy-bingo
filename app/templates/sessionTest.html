@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block headmeta %}
+	<meta name='description' content='spicy bingo'>
+	<title>Session Test</title>
+{% endblock %}
+{% block scripts %}
+    <script type='text/javascript' src="{{ url_for('static',filename='js/sessionTest.js') }}"></script>
+{% endblock %}
+{% block css %}
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/index.css') }}">
+{% endblock %}
+{% block content %}
+<div class="flex center height-90">
+    <div class="flex button-2">
+        <div id='list-button' class="small-box dark-bg hilight-fg flex center btn">List Sessions</div>
+        <div id='create-button' class="small-box dark-bg hilight-fg flex center btn">Add Session</div>
+    </div>
+    <div class="flex center">
+        <input type='text' id='name-input' name='name-input' placeholder='session name'>
+    </div>
+ </div>
+{% endblock %}
