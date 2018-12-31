@@ -16,7 +16,7 @@ def board():
 def boards(name):
     session = sessionManager.fetchSession(name)
     if not session:
-        sessionManager.createSession(name)
+        session = sessionManager.createSession(name)
     return render_template('board.html', name=name, playerNames=session.players)
 
 @app.route('/players/<name>', methods=['GET'])
@@ -59,7 +59,8 @@ def addPlayer(message):
         {
             'session-name': message['session-name'],
             'player-name': message['player-name']
-        })
+        },
+        broadcast=True)
     
      
 @socketio.on('my event', namespace='/test')

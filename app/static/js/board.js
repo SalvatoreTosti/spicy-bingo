@@ -1,8 +1,14 @@
 $.socket = new Object()
 $(document).ready(function(){
     $.socket = io.connect('http://' + document.domain + ':' + location.port + '/test');
-    $.socket.on('point-response', function(msg) {
-        console.log('Received: ' + msg.data)
+    $.socket.on('add-player-response', function(msg) {
+        console.log('in here!')
+        $('#player-list')
+        .append(msg['player-name'])
+        .addClass('tiny-box small-margin-vertical mid-bg')
+        // playerName = msg['player-name']
+        
+        // console.log('Received: ' + msg.data)
     })
 })
 

@@ -31,9 +31,11 @@
             <div class="dark-bg small-box flex-column height-100 flex-start">
                 <div class="small-box small-margin-vertical hilight-bg flex center">{{ name }}</div>
                 <div class='tiny-box small-margin-vertical hilight-bg'>People</div>
+                <div id='player-list' class='flex-column small-margin-vertical'>
                 {% for name in playerNames %}
                     <div class='tiny-box small-margin-vertical mid-bg'>{{ name }}</div>
                 {% endfor %}
+                </div>
                 <!-- <div class='tiny-box small-margin-vertical mid-bg'>Zed</div>
                 <div class='tiny-box small-margin-vertical mid-bg'>Zenith</div>
                 <div class='tiny-box small-margin-vertical mid-bg'>Zolt</div> -->
