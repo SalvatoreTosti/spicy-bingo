@@ -4,6 +4,7 @@
 	<title>Spicy Bingo</title>
 {% endblock %}
 {% block scripts %}
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
     <script type='text/javascript' src="{{ url_for('static',filename='js/board.js') }}"></script>
 {% endblock %}
 {% block css %}
@@ -28,10 +29,14 @@
         </div>
         <div class="col">
             <div class="dark-bg small-box flex-column height-100 flex-start">
+                <div class="small-box small-margin-vertical hilight-bg flex center">{{ name }}</div>
                 <div class='tiny-box small-margin-vertical hilight-bg'>People</div>
-                <div class='tiny-box small-margin-vertical mid-bg'>Zed</div>
+                {% for name in playerNames %}
+                    <div class='tiny-box small-margin-vertical mid-bg'>{{ name }}</div>
+                {% endfor %}
+                <!-- <div class='tiny-box small-margin-vertical mid-bg'>Zed</div>
                 <div class='tiny-box small-margin-vertical mid-bg'>Zenith</div>
-                <div class='tiny-box small-margin-vertical mid-bg'>Zolt</div>
+                <div class='tiny-box small-margin-vertical mid-bg'>Zolt</div> -->
                 <div class='tiny-box small-margin-vertical light-bg flex space-between'>
                     <div>Zolt</div>
                     <div>(!)</div>

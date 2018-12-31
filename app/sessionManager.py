@@ -25,7 +25,9 @@ class SessionManager():
         return names
     
     def createSession(self, name):
-        self._sessions.append(Session(name))
+        newSession = Session(name)
+        self._sessions.append(newSession)
+        return newSession
     
     def fetchSession(self, name):
         for session in self._sessions:
