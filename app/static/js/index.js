@@ -1,24 +1,30 @@
 $.socket = new Object()
 
 $(document).ready(function(){
-    console.log('zed')
     $.socket = io.connect('http://' + document.domain + ':' + location.port + '/test');
-    console.log($.socket)
-    $.socket.on('my response', function(msg) {
-        console.log('Received: ' + msg.data)
+});
+
+$(document).ready(function(){
+    $.socket.on('toggle-response', function(msg) {
+        console.log(msg);
     });
 });
 
+$(document).ready(function(){
+    $.socket.on('username-response', function(msg) {
+        console.log(msg);
+    });
+});
+
+
 $(function(){
 	$('#test-button').click(function() {
-        playerName = window.prompt('player name')
-        $.socket.emit(
-            'add-player-event',
-             {
-                 'session-name': 'test',
-                 'player-name': playerName
-             })
-        console.log('done')
+        x = Number(window.prompt('x'))
+        y = Number(window.prompt('y'))
+        
+        $.socket.emit('toggle-event',{'room':'test','x':x,'y':y})
+        
+        // $.socket.emit('join', {'username': username,'room':'test'})
         return false;
     })
 })

@@ -12,10 +12,6 @@ class SessionManager():
         
     def close(self):
         pass
-        # if self._sessions is None:
-            # return
-        # for session in self._sessions:
-            # session.close()
     
     @property
     def sessionNames(self):
@@ -25,7 +21,7 @@ class SessionManager():
         return names
     
     def createSession(self, name):
-        newSession = Session(name)
+        newSession = Session(name, 'regular', ['a','b','c','d','e','f','g','h','i'])
         self._sessions.append(newSession)
         return newSession
     

@@ -16,15 +16,9 @@
     <div class="row">
         <div class="col-9">
             <div class="grid-3">
-              <div class="card small-box dark-bg flex center font-3">One</div>
-              <div class="card small-box mid-bg flex center font-3">You get a spicy pepper</div>
-              <div class="card small-box dark-bg flex center font-3">Three</div>
-              <div class="card small-box dark-bg flex center font-3">Four</div>
-              <div class="card small-box dark-bg flex center font-3">Five</div>
-              <div class="card small-box dark-bg flex center font-3">Six</div>
-              <div class="card small-box dark-bg flex center font-3">Seven</div>
-              <div class="card small-box dark-bg flex center font-3">Eight</div>
-              <div class="card small-box dark-bg flex center font-3">Nine</div>
+                {% for word in words %}
+                    <div class="card small-box dark-bg flex center font-3">{{ word }}</div>
+                {% endfor %}
             </div>
         </div>
         <div class="col">
