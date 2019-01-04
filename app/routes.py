@@ -22,10 +22,32 @@ def boards(name):
         flask_session['username'] = Names.generateName()
     session = sessionManager.fetchSession(name)
     if not session:
-        session = sessionManager.createSession(name)
+        session = sessionManager.createSession(
+        'test',
+        3,
+        3,
+        [
+            'test','test','test',
+            'test','testa','test',
+            'test','test','test'
+        ])
     session.addPlayer(flask_session['username'])
     
     return render_template('board.html', name=name, playerNames=session.players, words=session.generateWordSet())
+
+@app.route('/create', methods=['GET','POST'])
+def create():
+    if not flask_session['username']:
+        flask_session['username'] = Names.generateName()
+    if request.method == 'GET':
+        return render_template('create.html')    
+    form = request.form
+    name = form['name']
+    words = form['words']
+    width = form['width']
+    height = form['height']
+    session = sessionManager.createSession(name, width, height, words)
+    redirect(url_for('boards', name=name))
 
 @app.route('/sessionStart', methods=['POST'])
 def sessionStart():
