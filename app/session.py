@@ -2,12 +2,13 @@ from app.board import Board
 import random
 
 class Session():
-    def __init__(self, name, bingoRule, words):
+    def __init__(self, name, bingoRule, width, height, words):
         self._name = name
         self._players = {}
         self._bingoRule = bingoRule
         self._words = words
-        
+        self._width = width
+        self._height = height
     
     @property
     def name(self):
@@ -17,11 +18,19 @@ class Session():
     def players(self):
         return self._players
     
+    @property
+    def playerNames(self):
+        return list(self._players.keys())
+        
     def generateWordSet(self):
-        return random.sample(self._words, 3 * 3)
+        totalWordCount = self._width * self._height
+        words = self._words
+        while len(words) < totalWordCount:
+            words = words + words            
+        return random.sample(words, totalWordCount)
 
     def addPlayer(self, name):
-        self._players[name] = Board(3,3)
+        self._players[name] = Board(self._width, self._height)
     
     def toggle(self, name, x, y):
         self._players.get(name).togglePoint(x,y)

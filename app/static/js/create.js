@@ -8,6 +8,12 @@ $(function(){
 })
 
 $(function(){
+	$('#create-button').click(function() {
+        create()
+    }) 
+})
+
+$(function(){
     $('#word-container').on('click', '.click-box', function (event) {
         $(this).remove()
         updateCreateButton()
@@ -46,4 +52,38 @@ function updateCreateButton(){
             return
         }
     }
+}
+
+function create(){
+    data = $('form').serialize()
+    boardSize = $('#board-size-buttons input:radio:checked').parent('label').text().toLowerCase().trim()
+    
+    translatedBoardSize=''
+    if(boardSize == '3 x 3'){
+        translatedBoardSize = 'three'
+    } else if(boardSize == '5 x 5') {
+        translatedBoardSize = 'five'
+    }
+    
+    mode = $('#mode-buttons input:radio:checked').parent('label').text().toLowerCase().trim()    
+	data = $('form').serialize()
+    data = data.replace('size=on','size='+translatedBoardSize)
+    data = data.replace('mode=on','mode='+mode)
+    
+    childText = []
+    children = $("#word-container").children(".click-box")
+    for(i = 0; i < children.length; i++){
+        childText[i] = children[i].innerText
+    }
+    data += '&words=' + childText    
+    $.ajax({
+        url: '/create',
+        data: data,
+        type: 'POST',
+        success: function(response) {
+			response = JSON.parse(response)
+            console.log(response)
+            goToBoard(response['name'])
+        }
+    })
 }

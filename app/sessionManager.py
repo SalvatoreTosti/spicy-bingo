@@ -20,8 +20,8 @@ class SessionManager():
             names.append(session.name)
         return names
     
-    def createSession(self, name):
-        newSession = Session(name, 'regular', ['a','b','c','d','e','f','g','h','i'])
+    def createSession(self, name, mode, width, height, words):
+        newSession = Session(name, mode, width, height, words)
         self._sessions.append(newSession)
         return newSession
     

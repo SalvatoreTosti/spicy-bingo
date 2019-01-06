@@ -22,6 +22,10 @@ body {
     flex-direction: column;
 }
 
+.flex-wrap {
+    flex-wrap: wrap
+}
+
 .button-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -85,6 +89,10 @@ body {
 .small-box {
     border-radius: .5em;
     padding: 1em;
+}
+
+.margin-half {
+    margin: .5em;
 }
 
 .dark-bg {

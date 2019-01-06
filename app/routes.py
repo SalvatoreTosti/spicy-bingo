@@ -1,6 +1,6 @@
 import json
 from app import app, sessionManager, socketio
-from flask import render_template, request
+from flask import render_template, request, redirect, url_for
 from flask import session as flask_session
 from flask_socketio import emit, send, join_room, leave_room
 from app.names import Names
@@ -8,8 +8,6 @@ from app.names import Names
 @app.route('/')
 @app.route('/index')
 def index():
-    if not flask_session['username']:
-        flask_session['username'] = Names.generateName()
     return render_template('index.html')
     
 @socketio.on('username', namespace='/test')
@@ -18,36 +16,43 @@ def username_message(message):
 
 @app.route('/boards/<name>', methods=['GET'])
 def boards(name):
-    if not flask_session['username']:
-        flask_session['username'] = Names.generateName()
     session = sessionManager.fetchSession(name)
     if not session:
-        session = sessionManager.createSession(
-        'test',
-        3,
-        3,
-        [
-            'test','test','test',
-            'test','testa','test',
-            'test','test','test'
-        ])
-    session.addPlayer(flask_session['username'])
-    
+        return redirect(url_for('create'))
+    if not flask_session.get('username'):
+        flask_session['username'] = Names.generateName()
     return render_template('board.html', name=name, playerNames=session.players, words=session.generateWordSet())
+
+@app.route('/name', methods=['GET'])
+def name():
+    if not flask_session.get('username'):
+        flask_session['username'] = Names.generateName()
+    return json.dumps({'name': flask_session['username']})
+
+@app.route('/players/<name>', methods=['GET'])
+def players(name):
+    session = sessionManager.fetchSession(name)
+    if not session:
+        return []
+    return json.dumps({'players' : session.playerNames})
 
 @app.route('/create', methods=['GET','POST'])
 def create():
-    if not flask_session['username']:
-        flask_session['username'] = Names.generateName()
     if request.method == 'GET':
         return render_template('create.html')    
     form = request.form
     name = form['name']
-    words = form['words']
-    width = form['width']
-    height = form['height']
-    session = sessionManager.createSession(name, width, height, words)
-    redirect(url_for('boards', name=name))
+    sizeWord = form['size']
+    size = 0
+    if sizeWord == 'three':
+        size = 3
+    elif sizeWord == 'five':
+        size = 5
+    
+    mode = form['mode']
+    words = form['words'].split(",")
+    session = sessionManager.createSession(name, mode, size, size, words)
+    return json.dumps({'name':name})
 
 @app.route('/sessionStart', methods=['POST'])
 def sessionStart():
@@ -61,7 +66,8 @@ def on_join(data):
     username = data['username']
     room = data['room']
     join_room(room)
-    emit('test',{'message':username + ' has entered the room.'}, room=room)
+    addPlayer({'session-name' : room, 'player-name': username})
+    # emit('test',{'message':username + ' has entered the room.'}, room=room)
 
 @socketio.on('leave', namespace='/test')
 def on_leave(data):
@@ -85,8 +91,6 @@ def toggle(message):
 @socketio.on('add-player-event', namespace='/test')
 def addPlayer(message):
     session = sessionManager.fetchSession(message['session-name'])
-    if not session:
-        session = sessionManager.createSession(message['session-name'])
     if session:
         session.addPlayer(message['player-name'])
         emit(
