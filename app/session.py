@@ -21,6 +21,14 @@ class Session():
     @property
     def playerNames(self):
         return list(self._players.keys())
+    
+    @property
+    def gridSize(self):
+        if self._height == 3:
+            return 'three'
+        elif self._height == 5:
+            return 'five'
+        return 'three'
         
     def generateWordSet(self):
         totalWordCount = self._width * self._height

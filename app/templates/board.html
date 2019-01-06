@@ -15,10 +15,18 @@
 <div class="container">
     <div class="row">
         <div class="col-9">
-            <div class="grid-3">
+            {% if size == 'three' %}
+                <div class="grid-3">
                 {% for word in words %}
                     <div class="card small-box dark-bg flex center font-3">{{ word }}</div>
                 {% endfor %}
+            {% endif %}
+            {% if size == 'five' %}
+                <div class="grid-5">
+                {% for word in words %}
+                    <div class="card small-box dark-bg flex center font-5">{{ word }}</div>
+                {% endfor %}
+            {% endif %}               
             </div>
         </div>
         <div class="col">

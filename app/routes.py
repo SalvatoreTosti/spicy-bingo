@@ -21,7 +21,7 @@ def boards(name):
         return redirect(url_for('create'))
     if not flask_session.get('username'):
         flask_session['username'] = Names.generateName()
-    return render_template('board.html', name=name, playerNames=session.players, words=session.generateWordSet())
+    return render_template('board.html', name=name, playerNames=session.players, size=session.gridSize, words=session.generateWordSet())
 
 @app.route('/name', methods=['GET'])
 def name():

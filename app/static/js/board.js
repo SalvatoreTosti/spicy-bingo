@@ -10,12 +10,6 @@ $(document).ready(function(){
         url: '/players/'+sessionName,
         type: 'GET',
         success: function(response){
-            // response = JSON.parse(response)
-            // players = response['players']
-            //
-            // for (player of response['players']){
-            //     addPlayerToList(player)
-            // }
             $.ajax({
                 url: '/name',
                 type: 'GET',
