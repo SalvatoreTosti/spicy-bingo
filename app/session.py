@@ -30,7 +30,8 @@ class Session():
         return random.sample(words, totalWordCount)
 
     def addPlayer(self, name):
-        self._players[name] = Board(self._width, self._height)
+        if not self._players.get(name):
+            self._players[name] = Board(self._width, self._height)
     
     def toggle(self, name, x, y):
         self._players.get(name).togglePoint(x,y)

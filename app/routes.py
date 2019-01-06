@@ -67,7 +67,6 @@ def on_join(data):
     room = data['room']
     join_room(room)
     addPlayer({'session-name' : room, 'player-name': username})
-    # emit('test',{'message':username + ' has entered the room.'}, room=room)
 
 @socketio.on('leave', namespace='/test')
 def on_leave(data):
@@ -92,6 +91,8 @@ def toggle(message):
 def addPlayer(message):
     session = sessionManager.fetchSession(message['session-name'])
     if session:
+        if message['player-name'] in session.playerNames:
+            return
         session.addPlayer(message['player-name'])
         emit(
         'add-player-response', 

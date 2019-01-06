@@ -1,14 +1,7 @@
 $.socket = new Object()
 
 $(document).ready(function(){
-  $(window).bind('hashchange', function() {
-      console.log('changing window')
-      })  
-})
-
-$(document).ready(function(){
     $.socket = io.connect('http://' + document.domain + ':' + location.port + '/test');
-    console.log('refresh')
     sessionName = window.location.pathname.substr(window.location.pathname.lastIndexOf('/') + 1)
     $.socket.on('add-player-response', function(msg) {
         addPlayerToList(msg['player-name'])
@@ -17,12 +10,12 @@ $(document).ready(function(){
         url: '/players/'+sessionName,
         type: 'GET',
         success: function(response){
-            response = JSON.parse(response)
-            players = response['players']
-            
-            for (player of response['players']){
-                addPlayerToList(player)
-            }
+            // response = JSON.parse(response)
+            // players = response['players']
+            //
+            // for (player of response['players']){
+            //     addPlayerToList(player)
+            // }
             $.ajax({
                 url: '/name',
                 type: 'GET',
@@ -56,8 +49,8 @@ $(function(){
 })
 
 function addPlayerToList(playerName){
-        newDiv = $( "<div />" ).text(playerName)
-        .addClass('tiny-box small-margin-vertical mid-bg')
-    
-        $('#player-list').append(newDiv)
+    console.log(playerName)
+    newDiv = $( "<div />" ).text(playerName)
+    .addClass('tiny-box small-margin-vertical mid-bg')
+    $('#player-list').append(newDiv)
 }
