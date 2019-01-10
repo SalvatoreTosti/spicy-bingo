@@ -31,15 +31,12 @@ $(function(){
 
 $(function(){
 	$('#start-button').click(function() {
-        console.log('start')
-        $.socket.emit('my event', {data: '123'})
-        return false;
+        goToCreate()
 	})
 })
 
 $(function(){
 	$('#join-button').click(function() {
-        console.log('join')
         goToBoard()
 	})
 })
