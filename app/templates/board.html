@@ -14,35 +14,35 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-9">
+        <div class="col-12 col-sm-9">
             {% if size == 'three' %}
                 <div class="grid-3">
                 {% for word in words %}
                     <div class="card small-box dark-bg flex center font-3">{{ word }}</div>
                 {% endfor %}
+                </div>
             {% endif %}
             {% if size == 'five' %}
                 <div class="grid-5">
                 {% for word in words %}
                     <div class="card small-box dark-bg flex center font-5">{{ word }}</div>
                 {% endfor %}
+                </div>
             {% endif %}               
-            </div>
         </div>
-        <div class="col">
+        <div class="col col-sm-3">
             <div class="dark-bg small-box flex-column height-100 flex-start">
                 <div class="small-box small-margin-vertical hilight-bg flex center">{{ name }}</div>
                 <div class='tiny-box small-margin-vertical hilight-bg'>People</div>
                 <div id='player-list' class='flex-column small-margin-vertical'>
-                {% for name in playerNames %}
-                    <div class='tiny-box small-margin-vertical mid-bg'>{{ name }}</div>
-                {% endfor %}
-                <div class='tiny-box small-margin-vertical light-bg flex space-between'>
-                    <div>Zolt</div>
-                    <div>(!)</div>
+                    {% for name in playerNames %}
+                        <div class='tiny-box small-margin-vertical mid-bg'>{{ name }}</div>
+                    {% endfor %}
+                    <div class='tiny-box small-margin-vertical light-bg flex space-between'>
+                        <div>Zolt</div>
+                        <div>(!)</div>
+                    </div>
                 </div>
-                </div>
-                
             </div>
         </div>
     </div>

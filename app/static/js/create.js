@@ -82,7 +82,6 @@ function create(){
         type: 'POST',
         success: function(response) {
 			response = JSON.parse(response)
-            console.log(response)
             goToBoard(response['name'])
         }
     })
