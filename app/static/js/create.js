@@ -26,6 +26,18 @@ $(function(){
     })
 })
 
+$(function(){
+    $.ajax({
+        url: '/roomName',
+        type: 'GET',
+        success: function(response) {
+            console.log('ok')
+			response = JSON.parse(response)
+            $('#name').attr('placeholder',response['name'])
+        }
+    })
+})
+
 function updateCreateButton(){
     wordCount = $("#word-container").children().length;
     boardSize = $('#board-size-buttons input:radio:checked').parent('label').text().trim()

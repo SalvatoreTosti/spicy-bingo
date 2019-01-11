@@ -23,11 +23,21 @@ def boards(name):
         flask_session['username'] = Names.generateName()
     return render_template('board.html', name=name, playerNames=session.players, size=session.gridSize, words=session.generateWordSet())
 
+@app.route('/activeBoard/<name>', methods=['GET'])
+def activeBoard(name):
+    if sessionManager.fetchSession(name):
+        return json.dumps({'active' : 'true'})    
+    return json.dumps({'active' : 'false'})
+
 @app.route('/name', methods=['GET'])
 def name():
     if not flask_session.get('username'):
         flask_session['username'] = Names.generateName()
     return json.dumps({'name': flask_session['username']})
+
+@app.route('/roomName', methods=['GET'])
+def roomName():
+    return json.dumps({'name': Names.generateRoomName()})
 
 @app.route('/players/<name>', methods=['GET'])
 def players(name):

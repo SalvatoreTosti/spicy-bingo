@@ -124,4 +124,87 @@ class Names():
         color = random.choice(colors)
         animal = random.choice(animals)
         return color + ' ' + animal
+        
+    @staticmethod
+    def generateRoomName():
+        rooms = [
+           'garage',
+           'chapel',
+           'aerary',
+           'lounge',
+           'atrium',
+           'attic',
+           'auditorium',
+           'ballroom',
+           'bedroom',
+           'cafeteria',
+           'closet',
+           'entryway',
+           'garden',
+           'office',
+           'hall',
+           'kitchen',
+           'larder',
+           'loft',
+           'pantry',
+           'parlour',
+           'cellar',
+           'studio',
+           'study',
+           'vault'
+        ]
     
+        colors = [
+            'charcoal',
+            'ebony',
+            'jet',
+            'onyx',
+            'licorice',
+            'azure',
+            'celeste',
+            'cobalt',
+            'periwinkle',
+            'teal',
+            'cerulean',
+            'zaffre',
+            'emerald',
+            'lime',
+            'green',
+            'malachite',
+            'olive',
+            'sage',
+            'turquoise',
+            'pistachio',
+            'forest',
+            'green',
+            'honeydew',
+            'amaranth',
+            'cinnabar',
+            'crimson',
+            'fuschia',
+            'ruby',
+            'terracotta',
+            'coquelicot',
+            'pink',
+            'vermillion',
+            'amethyst',
+            'lavender',
+            'lilac',
+            'mauve',
+            'orchid',
+            'phlox',
+            'violet',
+            'amber',
+            'beige',
+            'citrine',
+            'goldenrod',
+            'saffron',
+            'chartreuse',
+            'ecru',
+            'sunglow',
+            'aureolin'
+        ]
+        
+        color = random.choice(colors)
+        room = random.choice(rooms)
+        return color + '-' + room
