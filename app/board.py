@@ -44,8 +44,9 @@ class Board():
     
     def hasVerticalBingo(self):
         for i in range(self.width):
-            if not self._isBingoColumn(i):
-                return False
+            if self._isBingoColumn(i):
+                return True
+        return False
     
     def _isBingoColumn(self, column):
         if column > self.height:
@@ -57,8 +58,9 @@ class Board():
     
     def hasHorizontalBingo(self):
         for i in range(self.height):
-            if not self._isBingoRow(i):
-                return False
+            if self._isBingoRow(i):
+                return True
+        return False
                              
     def _isBingoRow(self, row):
         if row > self.width:
