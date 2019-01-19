@@ -51,4 +51,21 @@ class Session():
         if self._bingoRule == 'blackout':
             return board.hasBingoBlackout()
         
-    
+    def coordinateTranslate(self, number):
+        if self._height == 3:
+            lookup = {
+                '0' : {'x': 0, 'y': 0},
+                '1' : {'x': 1, 'y': 0},
+                '2' : {'x': 2, 'y': 0},
+                '3' : {'x': 0, 'y': 1},
+                '4' : {'x': 1, 'y': 1},
+                '5' : {'x': 2, 'y': 1},
+                '6' : {'x': 0, 'y': 2},
+                '7' : {'x': 1, 'y': 2},
+                '8' : {'x': 2, 'y': 2}                
+            }
+            return lookup[number]
+
+        elif self._height == 5:
+            return None
+            

@@ -91,9 +91,16 @@ def toggle(message):
     session = sessionManager.fetchSession(room)
     board = session.players[flask_session['username']]
     
-    x = message['x']
-    y = message['y']
+    coordinates = session.coordinateTranslate(message['number'])
+    x = coordinates['x']
+    y = coordinates['y']
     board.togglePoint(x,y)
+    
+    if session.bingo(flask_session['username']):
+        emit(
+            'bingo', 
+            {'player': flask_session['username']},
+            broadcast=True)
     
     emit('toggle-response', {'data': board.toString()})
 
