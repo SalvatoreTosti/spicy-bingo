@@ -1,7 +1,8 @@
 $(function(){
 	$('#add-word-button').click(function() {
         newDiv = $( "<div />" ).text($('#word-input').val())
-        .addClass('click-box small-box small-margin-vertical dark-bg hilight-fg margin-half btn')
+        .addClass('click-box small-box margin-half whitespace-nowrap light-mid-bg hilight-fg box-shadow text-shadow small-margin-vertical margin-half cursor')
+        newDiv.addClass('pulse-in-3')
         $('#word-container').prepend(newDiv)
         updateCreateButton()
     }) 
@@ -15,7 +16,14 @@ $(function(){
 
 $(function(){
     $('#word-container').on('click', '.click-box', function (event) {
-        $(this).remove()
+        item = $(this)
+        $(this).addClass('pulse-out-75')
+        setTimeout(
+            function(){
+                item.remove()
+            },
+            750
+        )
         updateCreateButton()
     })
 })
@@ -31,9 +39,8 @@ $(function(){
         url: '/roomName',
         type: 'GET',
         success: function(response) {
-            console.log('ok')
 			response = JSON.parse(response)
-            $('#name').attr('placeholder',response['name'])
+            $('#name').val(response['name'])
         }
     })
 })
@@ -43,24 +50,24 @@ function updateCreateButton(){
     boardSize = $('#board-size-buttons input:radio:checked').parent('label').text().trim()
     if(boardSize == '3 x 3'){
         if(wordCount >= 9){
-            $('#create-button').removeClass('mid-bg hilight-fg')
-            $('#create-button').addClass('dark-bg hilight-fg')
+            $('#create-button').removeClass('light-fg')
+            $('#create-button').addClass('jiggle-in-2 light-mid-bg hilight-fg box-shadow')
             return        
         } else {
-            $('#create-button').removeClass('dark-bg hilight-fg')
-            $('#create-button').addClass('mid-bg')
+            $('#create-button').removeClass('jiggle-in-2 light-mid-bg hilight-fg box-shadow')
+            $('#create-button').addClass('light-fg')
             return
         }
     }
     
     if(boardSize == '5 x 5'){
         if(wordCount >= 25){
-            $('#create-button').removeClass('mid-bg hilight-fg')
-            $('#create-button').addClass('dark-bg hilight-fg')
+            $('#create-button').removeClass('light-fg')
+            $('#create-button').addClass('jiggle-in-2 light-mid-bg hilight-fg box-shadow')
             return
         } else {
-            $('#create-button').removeClass('dark-bg hilight-fg')
-            $('#create-button').addClass('mid-bg')
+            $('#create-button').removeClass('jiggle-in-2 light-mid-bg hilight-fg box-shadow')
+            $('#create-button').addClass('light-fg')
             return
         }
     }

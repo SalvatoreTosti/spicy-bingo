@@ -21,7 +21,7 @@
         </div>
         <div class='form-group row'>
             <label class='col col-sm-2 offset-sm-1 col-form-label col-form-label-lg'>Board Size</label>
-            <div class='col col-sm-2 '>
+            <div class='col col-sm-2'>
                 <div id="board-size-buttons" class="btn-group btn-group-toggle" data-toggle="buttons">
                   <label class="btn btn-secondary active">
                     <input type="radio" name="size" id="size-3-button" autocomplete="off" checked> 3 x 3
@@ -46,24 +46,21 @@
             </div>
         </div>
         <div class='form-group row'>
-            <label for='word-input' class='col col-sm-2 offset-sm-1 col-form-label col-form-label-lg'>Words</label>
-            <div class='col-12 col-sm-8'>
-                <input type='text' class='form-control col-form-label-lg' id='word-input'>
-            </div>
-        </div>
-        <div class='form-group row'>
-            <div class='col-12 col-sm-4 offset-sm-4'>
-            <div id='add-word-button' class="small-box dark-bg hilight-fg flex center btn">Add Word</div>    
-            </div>        
-        </div>
-        <div class='form-group row'>
-            <div id='word-container' class='col-12 flex-wrap flex'></div>
-        </div>
-        <div class='form-group row'>
-            <div class='col-12 col-sm-4 offset-sm-4'>
-            <div id='create-button' class="small-box mid-bg flex center btn">Create Board</div>    
-            </div>        
-        </div>
-    </form>
+            <div class='col-10 offset-1'>
+                <div class='flex margin-half'>
+                <input type='text' class='form-control margin-half form-control-lg' id='word-input' placeholder='type stuff to add it to your bingo board...'>
+                 <div id='add-word-button' class="small-box margin-half whitespace-nowrap light-mid-bg hilight-fg box-shadow text-shadow flex center cursor">Add Word</div>
+                 </div>
+             </div>
+         </div>
+         <div class='form-group row'>
+             <div id='word-container' class='col-12 flex-wrap flex'></div>
+         </div>
+         <div class='form-group row'>
+             <div class='col-12 col-sm-4 offset-sm-4'>
+             <div id='create-button' class="small-box light-fg text-shadow flex center cursor">Create Board</div>    
+             </div>        
+         </div>
+     </form>
 </div>
 {% endblock %}
