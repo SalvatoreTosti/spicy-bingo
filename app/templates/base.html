@@ -13,14 +13,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script type='text/javascript' src="{{ url_for('static',filename='js/utils.js') }}"></script>
     {% block scripts %} {% endblock %}
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/utils.css') }}">
     {% block css %} {% endblock %}
 </head>
 
     <nav class='navbar navbar-default'>
     	<div class='container'>
-    		<div class='navbar-header'>
-    			<a id='nav-index' class='navbar-brand' href='#' onclick='return goToIndex()'>Home</a>
-    		</div>
+            <div class='navbar-brand hilight-fg text-shadow-deep cursor' onclick='return goToIndex()'>Home</div>
     	</div>
     </nav>
 
