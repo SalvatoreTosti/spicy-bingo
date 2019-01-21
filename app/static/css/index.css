@@ -166,11 +166,12 @@ body {
     background: linear-gradient(#ff7657, #665c84);
 }
 
+.mid-hilight-bg {
+    background: linear-gradient(#ff7657, #fbeed7);
+}
 .mid-light-bg {
     background: linear-gradient(#ff7657, #ffba5a);    
 }
-
-
 
 
 @keyframes pulseIn {
@@ -210,4 +211,6 @@ body {
     animation-name: jiggleIn;
     animation-duration: 2s;
 }
+
+
 

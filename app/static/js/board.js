@@ -37,7 +37,8 @@ $(document).ready(function(){
         $('#player-list').children('.player-card').each(function(){
             if($(this).text() == playerName){
                 $(this).removeClass('light-mid-bg')   
-                $(this).addClass('mid-light-bg')   
+                $(this).addClass('mid-dark-bg')
+                $(this).addClass('jiggle-in-2')
             }
         })
     });
@@ -47,6 +48,8 @@ $(function(){
 	$('.card').click(function() {
         if(!$(this).hasClass('active')){
             $(this).addClass('active')
+            $(this).addClass('jiggle-in-2')
+            
             $(this).removeClass('light-mid-bg')   
             $(this).addClass('hilight-mid-bg')
             $.socket.emit('toggle-event', {
@@ -56,7 +59,8 @@ $(function(){
             })
         } else {
             $(this).removeClass('active')
-            $(this).removeClass('hilight-mid-bg')   
+            $(this).removeClass('hilight-mid-bg')
+            $(this).removeClass('jiggle-in-2')
             $(this).addClass('light-mid-bg')
                      
             $.socket.emit('toggle-event', {
@@ -81,5 +85,6 @@ function addPlayerToList(playerName){
     
     newDiv = $( "<div />" ).text(playerName)
     .addClass('player-card tiny-box light-mid-bg hilight-fg box-shadow text-shadow small-margin-vertical flex center')
+    .addClass('pulse-in-3')
     $('#player-list').append(newDiv)
 }
