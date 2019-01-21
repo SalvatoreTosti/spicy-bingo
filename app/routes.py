@@ -21,7 +21,13 @@ def boards(name):
         return redirect(url_for('create'))
     if not flask_session.get('username'):
         flask_session['username'] = Names.generateName()
-    return render_template('board.html', name=name, playerNames=session.players, size=session.gridSize, words=session.generateWordSet())
+    
+    playerName = flask_session['username']
+    if not session.players.get(playerName):
+        session.setPlayerWords(playerName, session.generateWordSet())
+
+    words = session.getPlayerWords(playerName)    
+    return render_template('board.html', name=name, playerNames=session.players, size=session.gridSize, words=words)
 
 @app.route('/activeBoard/<name>', methods=['GET'])
 def activeBoard(name):
@@ -108,9 +114,9 @@ def toggle(message):
 def addPlayer(message):
     session = sessionManager.fetchSession(message['session-name'])
     if session:
-        if message['player-name'] in session.playerNames:
-            return
-        session.addPlayer(message['player-name'])
+        if not message['player-name'] in session.playerNames:
+            session.addPlayer(message['player-name'])
+        # session.addPlayer(message['player-name'])
         emit(
         'add-player-response', 
         {

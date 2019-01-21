@@ -150,6 +150,14 @@ body {
     color: #fbeed7;
 }
 
+.hilight-light-bg {
+    background: linear-gradient(#fbeed7, #ffba5a);
+}
+
+.hilight-mid-bg {
+    background: linear-gradient(#fbeed7, #ff7657);
+}
+
 .light-mid-bg {
     background: linear-gradient(#ffba5a, #ff7657);
 }
@@ -157,6 +165,13 @@ body {
 .mid-dark-bg {
     background: linear-gradient(#ff7657, #665c84);
 }
+
+.mid-light-bg {
+    background: linear-gradient(#ff7657, #ffba5a);    
+}
+
+
+
 
 @keyframes pulseIn {
     0% { transform: scale(0); }

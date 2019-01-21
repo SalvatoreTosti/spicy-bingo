@@ -9,7 +9,8 @@ class Board():
             for j in range(self.height):
                 column.append('')
             board.append(column)
-        self._board = board        
+        self._board = board  
+        self._words = []      
     
     @property
     def width(self):
@@ -18,6 +19,13 @@ class Board():
     @property
     def height(self):
         return self._height
+        
+    @property
+    def words(self):
+        return self._words
+    
+    def setWords(self, words):
+        self._words = words    
     
     def printBoard(self):
         for i in range(self.height):

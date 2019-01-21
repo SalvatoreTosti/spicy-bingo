@@ -8,6 +8,7 @@
     <script type='text/javascript' src="{{ url_for('static',filename='js/board.js') }}"></script>
 {% endblock %}
 {% block css %}
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/index.css') }}">
 <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/board.css') }}">
 {% endblock %}
 {% block content %}
@@ -18,30 +19,25 @@
             {% if size == 'three' %}
                 <div id='grid' class="grid-3">
                 {% for word in words %}
-                    <div class="card small-box dark-bg flex center font-3">{{ word }}</div>
+                    <div class="card light-mid-bg hilight-fg box-shadow text-shadow small-box flex center font-3 ">{{ word }}</div>
                 {% endfor %}
                 </div>
             {% endif %}
             {% if size == 'five' %}
                 <div id='grid' class="grid-5">
                 {% for word in words %}
-                    <div class="card small-box dark-bg hilight-fg font-5">{{ word }}</div>
+                    <div class="card light-mid-bg hilight-fg box-shadow text-shadow small-box flex font-5 center ">{{ word }}</div>
                 {% endfor %}
                 </div>
             {% endif %}               
         </div>
         <div class="col col-sm-3">
-            <div class="dark-bg small-box flex-column height-100 flex-start">
-                <div class="small-box small-margin-vertical hilight-bg flex center">{{ name }}</div>
-                <div class='tiny-box small-margin-vertical hilight-bg'>People</div>
+            <div class="dark-bg small-box flex-column height-100 flex-start box-shadow">
+                <div class="small-box small-margin-vertical hilight-light-bg dark-fg box-shadow text-shadow flex center">{{ name }}</div>
                 <div id='player-list' class='flex-column small-margin-vertical'>
                     {% for name in playerNames %}
-                        <div class='player-card tiny-box small-margin-vertical mid-bg'>{{ name }}</div>
+                        <div class='player-card tiny-box small-margin-vertical light-mid-bg hilight-fg box-shadow text-shadow flex center'>{{ name }}</div>
                     {% endfor %}
-                    <div class='tiny-box small-margin-vertical light-bg flex space-between'>
-                        <div>Zolt</div>
-                        <div>(!)</div>
-                    </div>
                 </div>
             </div>
         </div>

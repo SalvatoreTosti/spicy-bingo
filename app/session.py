@@ -29,6 +29,16 @@ class Session():
         elif self._height == 5:
             return 'five'
         return 'three'
+    
+    def setPlayerWords(self, name, words):
+        if not self._players.get(name):
+            self._players[name] = Board(self._width, self._height)
+        self._players[name].setWords(words)    
+    
+    def getPlayerWords(self, name):
+        if not self._players.get(name):
+            return []
+        return self._players[name].words
         
     def generateWordSet(self):
         totalWordCount = self._width * self._height

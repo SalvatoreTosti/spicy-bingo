@@ -21,10 +21,11 @@ $(function(){
         setTimeout(
             function(){
                 item.remove()
+                updateCreateButton()
+                
             },
             750
         )
-        updateCreateButton()
     })
 })
 

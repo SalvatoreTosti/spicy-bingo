@@ -33,15 +33,11 @@ $(document).ready(function(){
 
 $(document).ready(function(){
     $.socket.on('bingo', function(msg) {
-        console.log('in bingo!')
         playerName = msg['player']
         $('#player-list').children('.player-card').each(function(){
-            console.log($(this).text())
-            console.log(playerName)
             if($(this).text() == playerName){
-                $(this).removeClass('mid-bg')
-                $(this).addClass('light-bg')
-                $(this).addClass('hilight-fg')
+                $(this).removeClass('light-mid-bg')   
+                $(this).addClass('mid-light-bg')   
             }
         })
     });
@@ -49,19 +45,20 @@ $(document).ready(function(){
 
 $(function(){
 	$('.card').click(function() {
-        if($(this).hasClass('dark-bg')){
-            $(this).addClass('mid-bg')
-            $(this).removeClass('dark-bg')
+        if(!$(this).hasClass('active')){
             $(this).addClass('active')
+            $(this).removeClass('light-mid-bg')   
+            $(this).addClass('hilight-mid-bg')
             $.socket.emit('toggle-event', {
                 'room' : sessionName, 
                 'username' : $.playerName,
                 'number' : $(this).attr('number'),
             })
         } else {
-            $(this).addClass('dark-bg')
-            $(this).removeClass('mid-bg')
             $(this).removeClass('active')
+            $(this).removeClass('hilight-mid-bg')   
+            $(this).addClass('light-mid-bg')
+                     
             $.socket.emit('toggle-event', {
                 'room' : sessionName, 
                 'username' : $.playerName,
@@ -72,7 +69,17 @@ $(function(){
 })
 
 function addPlayerToList(playerName){
+    containsName = false
+    $('#player-list').children('.player-card').each(function(){
+        if($(this).text() == playerName){
+            containsName = true
+        }
+    })
+    if(containsName){
+        return
+    }
+    
     newDiv = $( "<div />" ).text(playerName)
-    .addClass('player-card tiny-box small-margin-vertical mid-bg')
+    .addClass('player-card tiny-box light-mid-bg hilight-fg box-shadow text-shadow small-margin-vertical flex center')
     $('#player-list').append(newDiv)
 }
