@@ -1,5 +1,9 @@
 $(function(){
 	$('#add-word-button').click(function() {
+        if($('#word-input').val() ==''){
+            return
+        }
+        
         newDiv = $( "<div />" ).text($('#word-input').val())
         .addClass('click-box small-box margin-half whitespace-nowrap light-mid-bg hilight-fg box-shadow text-shadow small-margin-vertical margin-half cursor')
         newDiv.addClass('pulse-in-3')
