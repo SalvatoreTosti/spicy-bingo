@@ -60,6 +60,11 @@ class Session():
             return board.hasVerticalBingo() or board.hasHorizontalBingo()
         if self._bingoRule == 'blackout':
             return board.hasBingoBlackout()
+            
+    def getToggledNumbers(self, name):
+        if not self._players.get(name):
+            self._players[name] = Board(self._width, self._height)
+        return self._players[name].getToggledPointNumbers()
         
     def coordinateTranslate(self, number):
         if self._height == 3:

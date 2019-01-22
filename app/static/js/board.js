@@ -25,13 +25,6 @@ $(document).ready(function(){
 })
 
 $(document).ready(function(){
-    $('#grid').children('.tile').each(
-        function(i) { 
-            $(this).attr('number',i)
-        })
-})
-
-$(document).ready(function(){
     $.socket.on('bingo', function(msg) {
         playerName = msg['player']
         $('#player-list').children('.player-card').each(function(){

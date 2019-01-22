@@ -26,8 +26,9 @@ def boards(name):
     if not session.players.get(playerName):
         session.setPlayerWords(playerName, session.generateWordSet())
 
-    words = session.getPlayerWords(playerName)    
-    return render_template('board.html', name=name, playerNames=session.players, size=session.gridSize, words=words)
+    words = session.getPlayerWords(playerName)
+    numbers = session.getToggledNumbers(playerName)
+    return render_template('board.html', name=name, playerNames=session.players, size=session.gridSize, words=words, numbers=numbers)
 
 @app.route('/activeBoard/<name>', methods=['GET'])
 def activeBoard(name):

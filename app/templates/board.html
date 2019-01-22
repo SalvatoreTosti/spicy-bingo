@@ -26,7 +26,11 @@
         {% if size == 'three' %}
             <div id='grid' class="grid-3 margin-half grid-grow">
             {% for word in words %}
-                <div class="tile light-mid-bg hilight-fg box-shadow text-shadow small-box flex center font-3">{{ word }}</div>
+                {% if loop.index0 in numbers %}
+                    <div class="active tile hilight-mid-bg hilight-fg jiggle-in-2 box-shadow text-shadow small-box flex center font-3" number={{loop.index0}}>{{ word }}</div>
+                {% else %}
+                    <div class="tile light-mid-bg hilight-fg box-shadow text-shadow small-box flex center font-3" number={{loop.index0}}>{{ word }}</div>
+                {% endif %}
             {% endfor %}
             </div>
         {% endif %}

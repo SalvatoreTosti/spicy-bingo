@@ -83,4 +83,13 @@ class Board():
             if not self.isBingoColumn(i):
                 return False
         return True
+        
+    def getToggledPointNumbers(self):
+        toggledNumbers = []
+        for i in range(self.height):
+            for j in range(self.width):
+                if self._board[j][i]:
+                    toggledNumbers.append(i * self.width + j)
+        return toggledNumbers
+
 
