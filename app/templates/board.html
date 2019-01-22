@@ -8,39 +8,35 @@
     <script type='text/javascript' src="{{ url_for('static',filename='js/board.js') }}"></script>
 {% endblock %}
 {% block css %}
-<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/index.css') }}">
 <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/board.css') }}">
 {% endblock %}
 {% block content %}
-
-<div class="container">
-    <div class="row">
-        <div class="col-10 col-sm-9">
-            {% if size == 'three' %}
-                <div id='grid' class="grid-3">
-                {% for word in words %}
-                    <div class="card light-mid-bg hilight-fg box-shadow text-shadow small-box flex center font-3 ">{{ word }}</div>
+<div class='container'>
+    <div class='flex small-wrap'>
+        
+        <div class="player-grow dark-bg small-box flex-column height-100 flex-start box-shadow margin-half">
+            <div class="small-box small-margin-vertical hilight-light-bg dark-fg box-shadow text-shadow flex center whitespace-nowrap">{{ name }}</div>
+            <div id='player-list' class='flex-column small-margin-vertical'>
+                {% for name in playerNames %}
+                    <div class='player-card tiny-box small-margin-vertical light-mid-bg hilight-fg box-shadow text-shadow flex center whitespace-nowrap'>{{ name }}</div>
                 {% endfor %}
-                </div>
-            {% endif %}
-            {% if size == 'five' %}
-                <div id='grid' class="grid-5">
-                {% for word in words %}
-                    <div class="card light-mid-bg hilight-fg box-shadow text-shadow small-box flex font-5 center ">{{ word }}</div>
-                {% endfor %}
-                </div>
-            {% endif %}               
-        </div>
-        <div class="col col-sm-3">
-            <div class="dark-bg small-box flex-column height-100 flex-start box-shadow">
-                <div class="small-box small-margin-vertical hilight-light-bg dark-fg box-shadow text-shadow flex center">{{ name }}</div>
-                <div id='player-list' class='flex-column small-margin-vertical'>
-                    {% for name in playerNames %}
-                        <div class='player-card tiny-box small-margin-vertical light-mid-bg hilight-fg box-shadow text-shadow flex center'>{{ name }}</div>
-                    {% endfor %}
-                </div>
             </div>
         </div>
+        
+        {% if size == 'three' %}
+            <div id='grid' class="grid-3 margin-half grid-grow">
+            {% for word in words %}
+                <div class="tile light-mid-bg hilight-fg box-shadow text-shadow small-box flex center font-3">{{ word }}</div>
+            {% endfor %}
+            </div>
+        {% endif %}
+        {% if size == 'five' %}
+            <div id='grid' class="grid-5 margin-half grid-grow">
+            {% for word in words %}
+                <div class="tile light-mid-bg hilight-fg box-shadow text-shadow small-box flex center font-5">{{ word }}</div>
+            {% endfor %}
+            </div>
+        {% endif %}
     </div>
 </div>
 {% endblock %}

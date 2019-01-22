@@ -96,7 +96,7 @@ def toggle(message):
     room = message['room']
     session = sessionManager.fetchSession(room)
     board = session.players[flask_session['username']]
-    
+        
     coordinates = session.coordinateTranslate(message['number'])
     x = coordinates['x']
     y = coordinates['y']

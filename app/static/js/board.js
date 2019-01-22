@@ -25,7 +25,7 @@ $(document).ready(function(){
 })
 
 $(document).ready(function(){
-    $('#grid').children('.card').each(
+    $('#grid').children('.tile').each(
         function(i) { 
             $(this).attr('number',i)
         })
@@ -45,7 +45,7 @@ $(document).ready(function(){
 });
 
 $(function(){
-	$('.card').click(function() {
+	$('.tile').click(function() {
         if(!$(this).hasClass('active')){
             $(this).addClass('active')
             $(this).addClass('jiggle-in-2')

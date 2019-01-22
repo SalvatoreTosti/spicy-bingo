@@ -68,8 +68,7 @@ body {
 
 .grid-3 {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-auto-rows: 200px;
+  grid-template-columns: 2fr 2fr 2fr;
   column-gap: 1em;
   row-gap: 1em;
 }
@@ -83,23 +82,16 @@ body {
 .grid-5 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-auto-rows: 100px;
   column-gap: 1em;
   row-gap: 1em;
 }
 
-.font-5 {
-    font-size: 1.5vw;
-    word-break:break-word;
-    text-overflow:ellipsis; 
-}
-
 .box {
-  overflow:hidden;
-  background-color: #444;
-  color: #fff;
-  border-radius: 5px;
-  padding: 20px;
+    overflow:hidden;
+    background-color: #444;
+    color: #fff;
+    border-radius: 5px;
+    padding: 20px;
 }
 
 .tiny-box {
