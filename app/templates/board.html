@@ -37,7 +37,11 @@
         {% if size == 'five' %}
             <div id='grid' class="grid-5 margin-half grid-grow">
             {% for word in words %}
-                <div class="tile light-mid-bg hilight-fg box-shadow text-shadow small-box flex center font-5">{{ word }}</div>
+                {% if loop.index0 in numbers %}
+                    <div class="active tile light-mid-bg hilight-fg box-shadow text-shadow small-box flex center font-5" number={{loop.index0}}>{{ word }}</div>
+                {% else %}
+                    <div class="tile light-mid-bg hilight-fg box-shadow text-shadow small-box flex center font-5" number={{loop.index0}}>{{ word }}</div>
+                {% endif %}
             {% endfor %}
             </div>
         {% endif %}

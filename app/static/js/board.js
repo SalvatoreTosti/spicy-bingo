@@ -42,7 +42,6 @@ $(function(){
         if(!$(this).hasClass('active')){
             $(this).addClass('active')
             $(this).addClass('jiggle-in-2')
-            
             $(this).removeClass('light-mid-bg')   
             $(this).addClass('hilight-mid-bg')
             $.socket.emit('toggle-event', {
