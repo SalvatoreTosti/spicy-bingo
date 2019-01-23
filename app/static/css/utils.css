@@ -5,7 +5,7 @@ html {
 }
 
 body {
-    background-color #665c84;
+    background-color hsl(225,18%,44%);
     background-image: linear-gradient(
         hsl(255,18%,44%), 
         hsl(225,18%,44%));
