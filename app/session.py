@@ -30,6 +30,9 @@ class Session():
             return 'five'
         return 'three'
     
+    def reset(self, name):
+        self._players[name].reset(self.generateWordSet())
+        
     def setPlayerWords(self, name, words):
         if not self._players.get(name):
             self._players[name] = Board(self._width, self._height)

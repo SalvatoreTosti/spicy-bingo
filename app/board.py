@@ -24,15 +24,18 @@ class Board():
     def words(self):
         return self._words
     
+    def reset(self, newWords):
+        board = []
+        for i in range(self.width):
+            column = []
+            for j in range(self.height):
+                column.append('')
+            board.append(column)
+        self._board = board
+        self._words = newWords
+    
     def setWords(self, words):
         self._words = words    
-    
-    def printBoard(self):
-        for i in range(self.height):
-            row = ''
-            for j in range(self.width):
-                row += ' ' + self._board[j][i]
-            print(row)
     
     def toString(self):
         rows = ''
@@ -91,5 +94,3 @@ class Board():
                 if self._board[j][i]:
                     toggledNumbers.append(i * self.width + j)
         return toggledNumbers
-
-

@@ -34,8 +34,54 @@ $(document).ready(function(){
                 $(this).addClass('jiggle-in-2')
             }
         })
-    });
-});
+    })
+})
+
+$(document).ready(function(){
+    $.socket.on('reset-response', function(msg) {
+        playerName = msg['player-name']
+        $('#player-list').children('.player-card').each(function(){
+            if($(this).text() == playerName){
+                $(this).addClass('light-mid-bg')   
+                $(this).removeClass('mid-dark-bg')
+                $(this).removeClass('jiggle-in-2')
+                element = $(this)
+                setTimeout(
+                    function(){
+                    element.addClass('jiggle-in-2')
+                },  20)                              
+            }
+        })
+    })
+})
+
+$(document).ready(function(){
+      $('#reset-button').click(function(){  
+          $.ajax({
+              url: '/words/' + sessionName + '/'+ $.playerName,
+              type: 'GET',
+              success: function(response){
+                  response = JSON.parse(response)
+                  var words = response['words']
+                  i = 0
+                  $('.tile').each(function(){
+                      $(this).removeClass('hilight-mid-bg')
+                      $(this).removeClass('active')
+                      $(this).removeClass('jiggle-in-2')
+                      $(this).addClass('light-mid-bg')
+                      $(this).text(words[i])
+                      i += 1 
+                  })
+                  $.socket.emit(
+                      'reset', 
+                      {
+                          'session-name' : sessionName, 
+                          'player-name' : $.playerName
+                      })                      
+                  }
+              })
+          })
+})
 
 $(function(){
 	$('.tile').click(function() {

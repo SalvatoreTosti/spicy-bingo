@@ -12,10 +12,10 @@
 {% endblock %}
 {% block content %}
 <div class='container'>
-    <div class='flex small-wrap'>
-        
+    <div class='flex small-wrap'>            
         <div class="player-grow dark-bg small-box flex-column height-100 flex-start box-shadow margin-half">
             <div class="small-box small-margin-vertical hilight-light-bg dark-fg box-shadow text-shadow flex center whitespace-nowrap">{{ name }}</div>
+            <div id='reset-button' class="small-box small-margin-vertical hilight-light-bg dark-fg box-shadow text-shadow flex center cursor">Reset</div>
             <div id='player-list' class='flex-column small-margin-vertical'>
                 {% for name in playerNames %}
                     <div class='player-card tiny-box small-margin-vertical light-mid-bg hilight-fg box-shadow text-shadow flex center whitespace-nowrap'>{{ name }}</div>

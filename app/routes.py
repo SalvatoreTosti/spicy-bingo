@@ -107,7 +107,7 @@ def toggle(message):
         emit(
             'bingo', 
             {'player': flask_session['username']},
-            broadcast=True)
+            broadcast = True)
     
     emit('toggle-response', {'data': board.toString()})
 
@@ -117,13 +117,33 @@ def addPlayer(message):
     if session:
         if not message['player-name'] in session.playerNames:
             session.addPlayer(message['player-name'])
-        # session.addPlayer(message['player-name'])
         emit(
         'add-player-response', 
         {
             'player-name': message['player-name']
         },
-        broadcast=True)
+        broadcast = True)
+
+@socketio.on('reset', namespace='/test')
+def resetPlayer(message):
+    session = sessionManager.fetchSession(message['session-name'])
+    if session:
+        session.reset(message['player-name'])
+        emit(
+            'reset-response',
+            {
+                'player-name': message['player-name']
+            },
+            broadcast = True)
+            
+@app.route('/words/<board>/<name>', methods=['GET'])
+def words(board, name):
+    session = sessionManager.fetchSession(board)
+    if session:
+        if name in session.playerNames:
+            words = session.getPlayerWords(name)
+            return json.dumps({'words': words})
+    return json.dumps({'words': []})
 
 @socketio.on('connect', namespace='/test')
 def test_connect():
