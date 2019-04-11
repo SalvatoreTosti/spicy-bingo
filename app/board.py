@@ -83,7 +83,7 @@ class Board():
                        
     def hasBingoBlackout(self):
         for i in range(self.width):
-            if not self.isBingoColumn(i):
+            if not self._isBingoColumn(i):
                 return False
         return True
         
