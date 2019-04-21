@@ -99,6 +99,25 @@ function create(){
     for(i = 0; i < children.length; i++){
         childText[i] = children[i].innerText
     }
+    
+    if(translatedBoardSize == 'three' && children.length < 9){
+        if(!confirm(
+            'There are fewer words provided than the size of the board. ' +  
+            'This board will include duplicates. ' +
+            'Is this ok?')){
+                return;
+            }
+    }
+    
+    if(translatedBoardSize == 'five' && children.length < 25){
+        if(!confirm(
+            'There are fewer words provided than the size of the board. ' +
+            'This board will include duplicates. ' +
+            'Is this ok?')){
+                return;
+            }
+    }
+    
     data += '&words=' + childText    
     $.ajax({
         url: '/create',
