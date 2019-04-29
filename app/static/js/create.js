@@ -1,6 +1,6 @@
 $(function(){
 	$('#add-word-button').click(function() {
-        if($('#word-input').val() ==''){
+        if($('#word-input').val().trim() === ''){
             return
         }
         
@@ -98,6 +98,22 @@ function create(){
     children = $("#word-container").children(".click-box")
     for(i = 0; i < children.length; i++){
         childText[i] = children[i].innerText
+    }
+    
+    if(children.length == 0){
+        alert('No phrases entered!')
+        return
+    }
+    
+    allValid = true
+    for(i = 0; i < childText.length; i++){
+        if(!childText || childText[i] === ''){
+            allValid = false
+        }
+    }
+    if(!allValid){
+         alert('Phrases contain an empty or blank item!')
+        return
     }
     
     if(translatedBoardSize == 'three' && children.length < 9){
