@@ -2,7 +2,7 @@ $.socket = new Object()
 $.playerName = new Object()
 
 $(document).ready(function(){
-    $.socket = io.connect('https://' + document.domain + ':' + location.port + '/test');
+    $.socket = io.connect('https://' + document.domain + ':' + location.port + '/bingo');
     sessionName = window.location.pathname.substr(window.location.pathname.lastIndexOf('/') + 1)
     $.socket.on('add-player-response', function(msg) {
         addPlayerToList(msg['player-name'])

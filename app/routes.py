@@ -10,7 +10,7 @@ from app.names import Names
 def index():
     return render_template('index.html')
     
-@socketio.on('username', namespace='/test')
+@socketio.on('username', namespace='/bingo')
 def username_message(message):
     emit('username-response', {'username': flask_session['username']})
 
@@ -78,21 +78,21 @@ def sessionStart():
      sessionManager.createSession(name)
      return json.dumps("success")
 
-@socketio.on('join', namespace='/test')
+@socketio.on('join', namespace='/bingo')
 def on_join(data):
     username = data['username']
     room = data['room']
     join_room(room)
     addPlayer({'session-name' : room, 'player-name': username})
 
-@socketio.on('leave', namespace='/test')
+@socketio.on('leave', namespace='/bingo')
 def on_leave(data):
     username = data['username']
     room = data['room']
     leave_room(room)
     send(username + ' has left the room.', room=room)
 
-@socketio.on('toggle-event', namespace='/test')
+@socketio.on('toggle-event', namespace='/bingo')
 def toggle(message):
     room = message['room']
     session = sessionManager.fetchSession(room)
@@ -111,7 +111,7 @@ def toggle(message):
     
     emit('toggle-response', {'data': board.toString()})
 
-@socketio.on('add-player-event', namespace='/test')
+@socketio.on('add-player-event', namespace='/bingo')
 def addPlayer(message):
     session = sessionManager.fetchSession(message['session-name'])
     if session:
@@ -124,7 +124,7 @@ def addPlayer(message):
         },
         broadcast = True)
 
-@socketio.on('reset', namespace='/test')
+@socketio.on('reset', namespace='/bingo')
 def resetPlayer(message):
     session = sessionManager.fetchSession(message['session-name'])
     if session:
@@ -145,10 +145,10 @@ def words(board, name):
             return json.dumps({'words': words})
     return json.dumps({'words': []})
 
-@socketio.on('connect', namespace='/test')
+@socketio.on('connect', namespace='/bingo')
 def test_connect():
     emit('my response', {'data': 'Connected'})
 
-@socketio.on('disconnect', namespace='/test')
+@socketio.on('disconnect', namespace='/bingo')
 def test_disconnect():
     print('Client disconnected')
