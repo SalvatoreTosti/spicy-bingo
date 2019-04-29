@@ -18,6 +18,17 @@ $(document).ready(function(){
                     response = JSON.parse(response)
                     $.playerName = response['name']
                     $.socket.emit('join', {'room' : sessionName, 'username' : response['name']})
+                    
+                    $.ajax({
+                        url: '/bingo/' + sessionName +'/'+ $.playerName,
+                        type: 'GET',
+                        success: function(response){
+                            response = JSON.parse(response)
+                            if(response['bingo']){
+                                togglePlayerNameBingo($.playerName)
+                            }
+                        }
+                    })  
                 }
             })
         }
@@ -26,14 +37,7 @@ $(document).ready(function(){
 
 $(document).ready(function(){
     $.socket.on('bingo', function(msg) {
-        playerName = msg['player']
-        $('#player-list').children('.player-card').each(function(){
-            if($(this).text() == playerName){
-                $(this).removeClass('light-mid-bg')   
-                $(this).addClass('mid-dark-bg')
-                $(this).addClass('jiggle-in-2')
-            }
-        })
+        togglePlayerNameBingo(msg['player'])
     })
 })
 
@@ -56,31 +60,31 @@ $(document).ready(function(){
 })
 
 $(document).ready(function(){
-      $('#reset-button').click(function(){  
-          $.ajax({
-              url: '/words/' + sessionName + '/'+ $.playerName,
-              type: 'GET',
-              success: function(response){
-                  response = JSON.parse(response)
-                  var words = response['words']
-                  i = 0
-                  $('.tile').each(function(){
-                      $(this).removeClass('hilight-mid-bg')
-                      $(this).removeClass('active')
-                      $(this).removeClass('jiggle-in-2')
-                      $(this).addClass('light-mid-bg')
-                      $(this).text(words[i])
-                      i += 1 
-                  })
-                  $.socket.emit(
-                      'reset', 
-                      {
-                          'session-name' : sessionName, 
-                          'player-name' : $.playerName
-                      })                      
-                  }
-              })
-          })
+    $('#reset-button').click(function(){  
+        $.ajax({
+            url: '/words/' + sessionName + '/'+ $.playerName,
+            type: 'GET',
+            success: function(response){
+                response = JSON.parse(response)
+                var words = response['words']
+                i = 0
+                $('.tile').each(function(){
+                    $(this).removeClass('hilight-mid-bg')
+                    $(this).removeClass('active')
+                    $(this).removeClass('jiggle-in-2')
+                    $(this).addClass('light-mid-bg')
+                    $(this).text(words[i])
+                    i += 1 
+                })
+                $.socket.emit(
+                    'reset', 
+                    {
+                        'session-name' : sessionName, 
+                        'player-name' : $.playerName
+                    })                      
+                }
+            })
+        })
 })
 
 $(function(){
@@ -125,4 +129,14 @@ function addPlayerToList(playerName){
     .addClass('player-card tiny-box light-mid-bg hilight-fg box-shadow text-shadow small-margin-vertical flex center')
     .addClass('pulse-in-3')
     $('#player-list').append(newDiv)
+}
+
+function togglePlayerNameBingo(playerName){
+    $('#player-list').children('.player-card').each(function(){
+        if($(this).text() == playerName){
+            $(this).removeClass('light-mid-bg')   
+            $(this).addClass('mid-dark-bg')
+            $(this).addClass('jiggle-in-2')
+        }
+    })
 }
