@@ -145,14 +145,15 @@ def words(board, name):
             return json.dumps({'words': words})
     return json.dumps({'words': []})
     
-@app.route('/bingo/<board>/<name>', methods=['GET'])
-def hasBingo(board, name):
+@app.route('/bingos/<board>', methods=['GET'])
+def bingos(board):
     session = sessionManager.fetchSession(board)
+    playersWithBingo = []
     if session:
-        if name in session.playerNames:
-            bingo = session.bingo(name)
-            return json.dumps({'bingo': bingo})
-    return json.dumps({'words': False})
+        for name in session.playerNames:
+            if session.bingo(name):
+                playersWithBingo.append(name)
+    return json.dumps({'bingos': playersWithBingo})
 
 @socketio.on('connect', namespace='/bingo')
 def test_connect():

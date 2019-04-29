@@ -20,12 +20,13 @@ $(document).ready(function(){
                     $.socket.emit('join', {'room' : sessionName, 'username' : response['name']})
                     
                     $.ajax({
-                        url: '/bingo/' + sessionName +'/'+ $.playerName,
+                        url: '/bingos/' + sessionName,
                         type: 'GET',
                         success: function(response){
                             response = JSON.parse(response)
-                            if(response['bingo']){
-                                togglePlayerNameBingo($.playerName)
+                            playersWithBingo = response['bingos']
+                            for(i = 0; i < playersWithBingo.length; i++){
+                                togglePlayerNameBingo(playersWithBingo[i])
                             }
                         }
                     })  
