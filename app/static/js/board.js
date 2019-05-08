@@ -62,6 +62,11 @@ $(document).ready(function(){
 
 $(document).ready(function(){
     $('#reset-button').click(function(){  
+        if(!confirm(
+            'This will reset your board and any cards you\'ve clicked. ' +  
+            'Are you sure?')){
+                return;
+            }
         $.ajax({
             url: '/words/' + sessionName + '/'+ $.playerName,
             type: 'GET',
