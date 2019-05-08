@@ -126,7 +126,7 @@ function addPlayerToList(playerName){
         return
     }
     
-    newDiv = $( "<div />" ).text(playerName)
+    newDiv = $( '<div />' ).text(playerName)
     .addClass('player-card tiny-box light-mid-bg hilight-fg box-shadow text-shadow small-margin-vertical flex center')
     .addClass('pulse-in-3')
     $('#player-list').append(newDiv)

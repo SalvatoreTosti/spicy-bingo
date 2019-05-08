@@ -4,7 +4,7 @@ $(function(){
             return
         }
         
-        newDiv = $( "<div />" ).text($('#word-input').val())
+        newDiv = $( '<div />' ).text($('#word-input').val())
         .addClass('click-box small-box margin-half whitespace-nowrap light-mid-bg hilight-fg box-shadow text-shadow small-margin-vertical margin-half cursor')
         newDiv.addClass('pulse-in-3')
         $('#word-container').prepend(newDiv)
@@ -51,7 +51,7 @@ $(function(){
 })
 
 function updateCreateButton(){
-    wordCount = $("#word-container").children().length;
+    wordCount = $('#word-container').children().length;
     boardSize = $('#board-size-buttons input:radio:checked').parent('label').text().trim()
     if(boardSize == '3 x 3'){
         if(wordCount >= 9){
@@ -95,7 +95,7 @@ function create(){
     data = data.replace('mode=on','mode='+mode)
     
     childText = []
-    children = $("#word-container").children(".click-box")
+    children = $('#word-container').children('.click-box')
     for(i = 0; i < children.length; i++){
         childText[i] = children[i].innerText
     }

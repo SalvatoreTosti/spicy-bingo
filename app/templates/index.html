@@ -11,15 +11,15 @@
 <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/index.css') }}">
 {% endblock %}
 {% block content %}
-<div class="container">
+<div class='container'>
     <div class='flex-column'>
         <h1 class='text-center hilight-fg text-shadow'>Spicy Bingo 🌶️</h1>
-        <div id='start-button' class="flex margin-half small-box cursor light-mid-bg hilight-fg box-shadow text-shadow flex center">Start Game</div>
-        <div id='join-button' class="flex margin-half small-box cursor light-mid-bg hilight-fg box-shadow text-shadow flex center">Join Game</div>
+        <div id='start-button' class='flex margin-half small-box cursor light-mid-bg hilight-fg box-shadow text-shadow flex center'>Start Game</div>
+        <div id='join-button' class='flex margin-half small-box cursor light-mid-bg hilight-fg box-shadow text-shadow flex center'>Join Game</div>
         <div class='flex margin-half center'>
             <input id='name' type='text' pattern='\S*' class='form-control form-control-lg'  name='name' required>
         </div>
-        <div id='help-text' class="invisible text-center">help text</div>
+        <div id='help-text' class='invisible text-center'>help text</div>
     </div>
 </div>
 {% endblock %}

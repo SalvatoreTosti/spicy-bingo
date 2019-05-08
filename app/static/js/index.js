@@ -7,7 +7,7 @@ $(function(){
 $(function(){
 	$('#join-button').click(function() {
         boardName = $('#name').val()
-        if(!boardName.match("^[a-zA-Z0-9]*$")){
+        if(!boardName.match('^[a-zA-Z0-9]*$')){
             $('#help-text').removeClass('invisible')
             $('#help-text').text('Please enter a valid room name. (no spaces)')
             return
