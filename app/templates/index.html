@@ -12,12 +12,12 @@
 {% endblock %}
 {% block content %}
 <div class='container'>
-    <div class='flex-column'>
+    <div class='flex-column center'>
         <h1 class='text-center hilight-fg text-shadow'>Spicy Bingo 🌶️</h1>
-        <div id='start-button' class='flex margin-half small-box cursor light-mid-bg hilight-fg box-shadow text-shadow flex center'>Start Game</div>
-        <div id='join-button' class='flex margin-half small-box cursor light-mid-bg hilight-fg box-shadow text-shadow flex center'>Join Game</div>
+        <div id='start-button' class='flex control margin-half small-box cursor light-mid-bg hilight-fg box-shadow text-shadow center'>Start Game</div>
+				<div id='join-button' class='flex control margin-half small-box cursor light-mid-bg hilight-fg box-shadow text-shadow center'>Join Game</div>
         <div class='flex margin-half center'>
-            <input id='name' type='text' pattern='\S*' class='form-control form-control-lg'  name='name' required>
+            <input id='name' type='text' pattern='\S*' class='form-control form-control-lg' placeholder='Enter a room name here' name='name' required>
         </div>
         <div id='help-text' class='invisible text-center'>help text</div>
     </div>
